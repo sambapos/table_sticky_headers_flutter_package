@@ -4,7 +4,6 @@ export 'cell_alignments.dart';
 export 'cell_dimensions.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import 'cell_alignments.dart';
 import 'cell_dimensions.dart';
@@ -98,12 +97,12 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
   @override
   void initState() {
     super.initState();
+    _scrollOffsetX = widget.initialScrollOffsetX;
+    _scrollOffsetY = widget.initialScrollOffsetY;
   }
 
   @override
   Widget build(BuildContext context) {
-    _scrollOffsetX = widget.initialScrollOffsetX;
-    _scrollOffsetY = widget.initialScrollOffsetY;
     _verticalSyncController = _SyncScrollController([
       widget.scrollControllers._verticalTitleController,
       widget.scrollControllers._verticalBodyController,
@@ -112,10 +111,6 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
       widget.scrollControllers._horizontalTitleController,
       widget.scrollControllers._horizontalBodyController,
     ]);
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
-      widget.scrollControllers._horizontalTitleController.jumpTo(widget.initialScrollOffsetX);
-      widget.scrollControllers._verticalTitleController.jumpTo(widget.initialScrollOffsetY);
-    });
     return Column(
       children: <Widget>[
         Row(
