@@ -1,0 +1,18 @@
+name: table_sticky_headers
+description: Two-dimension table with both sticky headers. You may scroll left \ right and top \ bottom. Sticky headers always stay visible. Legend cell (top left) always visible too.
+version: 2.0.0
+homepage: https://github.com/sambapos/table_sticky_headers_flutter_package
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
